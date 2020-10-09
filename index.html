@@ -31,32 +31,11 @@
         }
 
     </style>
+    <!-- See lambda_function.py to understand this part. I'm aware that the correct way to do this is
+    to include the javascript via the src attribute of the script tag, but for reasons, it's easier for
+    us to do it this way for now. -->
     <script>
-
-
-function resetOutputArea() {
-    document.getElementById("outputArea0").innerText = "Loading...";
-}
-
-function processInput() {
-    let textMessage = document.getElementsByClassName("textMessage")[0].value;
-    let destNumber  = document.getElementsByClassName("destNumber")[0].value;
-    let authKey     = document.getElementsByClassName("authKey")[0].value;
-    let xhr = new XMLHttpRequest();
-    xhr.open("POST", "https://api.ecs.rocks/v0/sms/sendReminderSMS", true);
-    xhr.setRequestHeader("Content-Type", "application/json");
-    xhr.send(JSON.stringify({
-        "auth-api-key": authKey,
-        "event-text": textMessage,
-        "destination-number": destNumber
-    }));
-    xhr.onload = function() {
-        let response = JSON.parse(this.responseText);
-        document.getElementById("outputArea0").innerText = response.text;
-    }
-}
-
-
+        '%%JAVASCRIPT%%'
     </script>
 </head>
 
